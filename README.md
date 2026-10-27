@@ -1,6 +1,6 @@
 # Docker
 
-A [labdex](https://github.com/reykimedev/labdex) plugin. Read-only. A Docker host's containers become hosts that run on it (plan/apply), with their published ports and Traefik labels as services; container state as host status. Use a read-only socket proxy for the API.
+A [labdex](https://github.com/labdex-app/labdex) plugin. Read-only. A Docker host's containers become hosts that run on it (plan/apply), with their published ports and Traefik labels as services; container state as host status. Use a read-only socket proxy for the API.
 
 **Version** 1.0 · **Works with** labdex >=1.3,<2 · **Plugin id** `docker`
 
