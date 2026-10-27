@@ -1,0 +1,28 @@
+id: docker
+name: Docker
+kind: integration
+version: "1.0"
+labdex: ">=1.3,<2"
+tags: [compute, containers, services, discovery, status]
+description: Read-only. A Docker host's containers become hosts that run on it (plan/apply), with their published ports and Traefik labels as services; container state as host status. Use a read-only socket proxy for the API.
+pages:
+  - {id: containers, label: Containers}
+settings:
+  - {key: url, label: Docker API, type: string, required: true, placeholder: "http://10.10.100.10:2375", help: "The Engine API, best through a read-only socket proxy (containers only)"}
+  - {key: token, label: Bearer token, type: secret, help: "If the proxy in front of the API wants one"}
+  - {key: verify_tls, label: Check the TLS certificate, type: bool, default: true}
+  - {key: host, label: The Docker host, type: string, help: "Inventory host the containers run on. Empty: the host the API address points at"}
+  - {key: containers_as_hosts, label: Containers as hosts, type: bool, default: true, help: "Each container becomes a host (type ct) running on the Docker host; off: only services on the Docker host"}
+  - {key: category, label: Category for new hosts, type: string, default: srv}
+  - {key: published_ports, label: Services from published ports, type: bool, default: true}
+  - {key: traefik_labels, label: Services from Traefik labels, type: bool, default: true}
+  - {key: include_stopped, label: Include stopped containers, type: bool, default: false}
+  - {key: ignore, label: Ignore containers, type: list, help: "Name patterns, e.g. *-db buildx_*"}
+host_settings:
+  - {key: container, label: Container, type: string, help: "The container this host is (set by the import)"}
+actions:
+  - {id: test, label: Check connection, mode: run}
+  - {id: import_containers, label: Import containers, mode: plan, schedulable: true, description: "Containers as hosts and their services; links existing hosts by name; never removes anything"}
+  - {id: poll, label: Read container state, mode: run, schedulable: true, schedule_default: 5, description: "Running / stopped as host status of the container hosts"}
+widgets:
+  - {id: containers, label: Docker, where: dashboard}
