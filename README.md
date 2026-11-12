@@ -1,5 +1,7 @@
 # Docker
 
+[![Release](https://github.com/labdex-app/labdex-plugin-docker/actions/workflows/release.yml/badge.svg)](https://github.com/labdex-app/labdex-plugin-docker/actions/workflows/release.yml) [![Buy Me a Coffee](https://img.shields.io/badge/buy%20me%20a%20coffee-bitsandbricks-7c3aed?logo=buymeacoffee&logoColor=white&labelColor=181b20)](https://buymeacoffee.com/bitsandbricks)
+
 A [labdex](https://github.com/labdex-app/labdex) plugin. Read-only. A Docker host's containers become hosts that run on it (plan/apply), with their published ports and Traefik labels as services; container state as host status. Use a read-only socket proxy for the API.
 
 **Version** 1.0 · **Works with** labdex >=1.3,<2 · **Plugin id** `docker`
